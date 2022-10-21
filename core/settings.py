@@ -46,6 +46,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,8 +69,6 @@ INSTALLED_APPS = [
     'core',
     'social',
     'accounts',
-
-
 ]
 
 SITE_ID = 1
@@ -196,6 +195,51 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+
+
+JAZZMIN_SETTINGS = {
+
+   # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Rembry Administración",
+
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Administración Rembry",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "Rembry",
+
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "img/logo.png",
+
+
+    # Welcome text on the login screen
+    "welcome_sign": "Bienvenido a la administración",
+
+    # Copyright on the footer
+    "copyright": "Realizado por Jonathan Restrepo, Mariana Munera y Henry Rodriguez",
+
+    "navigation_expanded": True,
+
+    "show_sidebar": True,
+
+    # Hide these apps when generating side menu e.g (auth)
+    "hide_apps": ['social'],
+
+ 
+
+}
+
+JAZZMIN_UI_TWEAKS = {
+    #"theme": "darkly",
+    #"theme": "simplex",
+    #"theme": "slate",
+
+ }
+
+
+
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
@@ -219,7 +263,7 @@ EMAIL_PORT = 587
 # Correo
 EMAIL_HOST_USER = 'henry_rodriguez23201@elpoli.edu.co'
 # Constraseña
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'AdministradorPolitecnico'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 if not DEBUG:
