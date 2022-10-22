@@ -4,7 +4,9 @@ from django.conf import settings
 import os
 from PIL import Image
 from django.db.models.signals import post_save
+
 # Create your models here.
+
 
 def user_directory_path_profile(instance, filename):
     profile_picture_name = 'users/{0}/profile.jpg'.format(instance.user.username)
@@ -41,18 +43,19 @@ class Profile(models.Model):
     picture = models.ImageField(default='users/user_default_profile.png', upload_to=user_directory_path_profile)
     banner = models.ImageField(default='users/user_default_bg.jpg', upload_to=user_directory_path_banner)
     verified = models.CharField(max_length=10, choices=VERIFICATION_OPTIONS, default='unverified')
-    coins = models.DecimalField(max_digits=19, decimal_places=2, default=0, blank=False)
-    followers = models.ManyToManyField(User, blank=True, related_name="followers")
     date_created = models.DateField(auto_now_add=True)
 
     #User info
     location = models.CharField(max_length=50, null=True, blank=True)
-    url = models.CharField(max_length=80, null=True, blank=True)
     birthday = models.DateField(null=True, blank=True)
     bio = models.TextField(max_length=150, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
+
+    class Meta:
+        verbose_name = "Perfil"
+        verbose_name_plural = "Perfiles"
 
 
 def create_user_profile(sender, instance, created, **kwargs):

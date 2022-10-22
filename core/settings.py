@@ -69,6 +69,8 @@ INSTALLED_APPS = [
     'core',
     'social',
     'accounts',
+    'proyecto',
+    'empleados',
 ]
 
 SITE_ID = 1
@@ -226,7 +228,21 @@ JAZZMIN_SETTINGS = {
     # Hide these apps when generating side menu e.g (auth)
     "hide_apps": ['social'],
 
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Inicio",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+    ],
  
+    "order_with_respect_to": ["proyecto","accounts","empleados",],
+
+
+    "hide_models": ['allauth.socialaccount'],
+
+
+
+
 
 }
 
@@ -263,7 +279,7 @@ EMAIL_PORT = 587
 # Correo
 EMAIL_HOST_USER = 'henry_rodriguez23201@elpoli.edu.co'
 # Constraseña
-EMAIL_HOST_PASSWORD = 'AdministradorPolitecnico'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 if not DEBUG:
