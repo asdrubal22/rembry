@@ -1,8 +1,19 @@
 from django.db import models
 from proyecto.models import Proyecto
-
+import os
+from django.conf import settings
 
 # Create your models here.
+
+def user_directory_path_empleado(instance, filename):
+    profile_picture_name = 'empleados/{0}/profile.jpg'.format(instance.primer_nombre)
+    full_path = os.path.join(settings.MEDIA_ROOT, profile_picture_name)
+
+    if os.path.exists(full_path):
+        os.remove(full_path)
+
+    return profile_picture_name
+
 
 class Empleado(models.Model):
     identificacion = models.CharField(max_length=100, blank=False)
@@ -13,6 +24,8 @@ class Empleado(models.Model):
     edad = models.PositiveIntegerField(blank=False, null=True)
     celular = models.CharField(max_length=10)
     email = models.EmailField()
+    foto = models.ImageField(default='users/user_default_profile.png', upload_to=user_directory_path_empleado)
+
 
     def __str__(self):
         return self.primer_nombre
@@ -23,6 +36,6 @@ class Asignacion_Empleado(models.Model):
     proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, related_name="proyecto")
 
     def __str__(self):
-        return str(self.proyecto)
+        return str(self.empleado)
 
 

@@ -6,4 +6,3 @@ from .models import Proyecto,Cita,Estado, Material
 admin.site.register(Proyecto)
 admin.site.register(Cita)
 admin.site.register(Estado)
-admin.site.register(Material)

@@ -67,10 +67,10 @@ INSTALLED_APPS = [
     "crispy_tailwind",
 
     'core',
-    'social',
     'accounts',
     'proyecto',
     'empleados',
+    'materiales',
 ]
 
 SITE_ID = 1
@@ -226,7 +226,6 @@ JAZZMIN_SETTINGS = {
     "show_sidebar": True,
 
     # Hide these apps when generating side menu e.g (auth)
-    "hide_apps": ['social'],
 
     "topmenu_links": [
 
@@ -235,10 +234,7 @@ JAZZMIN_SETTINGS = {
 
     ],
  
-    "order_with_respect_to": ["proyecto","accounts","empleados",],
-
-
-    "hide_models": ['allauth.socialaccount'],
+    "order_with_respect_to": ["proyecto","accounts","empleados","materiales"],
 
 
 

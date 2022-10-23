@@ -35,7 +35,6 @@ class Proyecto(models.Model):
     cliente = models.ForeignKey(User, on_delete=models.CASCADE, related_name="proyecto")
     cita = models.ForeignKey('Cita', on_delete=models.CASCADE)
     estado = models.ForeignKey('Estado', on_delete=models.CASCADE)
-    materiales = models.ManyToManyField('Material', blank=True, related_name="materials")
 
     def __str__(self):
         return self.nombre
